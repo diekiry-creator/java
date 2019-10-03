@@ -10,7 +10,7 @@ abstract class Product {
 
     public abstract String toString();
 
-    public abstract int init(Scanner scanner);
+    public abstract void init(Scanner scanner);
 
     public int getCost() {
         return cost;
@@ -38,7 +38,7 @@ class Rubika extends Toy {
     private String form;
 
     @Override
-    public int init(Scanner scanner) {
+    public void init(Scanner scanner) {
         System.out.print("Brand: ");
         brand = scanner.next();
         System.out.print("Form: ");
@@ -47,12 +47,11 @@ class Rubika extends Toy {
         ageRating = scanner.nextInt();
         System.out.print("Cost: ");
         cost = scanner.nextInt();
-        return 0;
     }
 
     @Override
     public String toString() {
-        return "Игрушка Кубик Рубика [ " +
+        return "Кубик Рубика [ " +
                 brand + ", " + form  + ", " + ageRating + "+ ] " +
                 cost + " руб.";
     }
@@ -74,7 +73,7 @@ class Cheese extends Milky {
     private String name;
 
     @Override
-    public int init(Scanner scanner) {
+    public void init(Scanner scanner) {
         System.out.print("Brand: ");
         brand = scanner.next();
         System.out.print("Name: ");
@@ -86,7 +85,6 @@ class Cheese extends Milky {
         eatDate = new GregorianCalendar(year, mouth - 1, day);
         System.out.print("Cost: ");
         cost = scanner.nextInt();
-        return 0;
     }
 
     @Override
@@ -97,14 +95,126 @@ class Cheese extends Milky {
     }
 }
 
+abstract class Electronics extends Product {
+    protected String model;
+    protected String serialNumber;
+
+    public String getModel() {
+        return model;
+    }
+    public boolean equalsSerialNumber(String _serialNumber) {
+        return serialNumber.equals(_serialNumber);
+    }
+}
+
+class TV extends Electronics {
+    private float diagonalSize;
+
+    @Override
+    public void init(Scanner scanner) {
+        System.out.print("Brand: ");
+        brand = scanner.next();
+        System.out.print("Model: ");
+        model = scanner.next();
+        System.out.print("Serial number: ");
+        serialNumber = scanner.next();
+        System.out.print("Diagonal size: ");
+        diagonalSize = scanner.nextFloat();
+        System.out.print("Cost: ");
+        cost = scanner.nextInt();
+    }
+
+    @Override
+    public String toString() {
+        return "Телевизор [ " + brand +  " " + model +  ", " + serialNumber +  ", " +  diagonalSize + "\" ] " +
+                cost + " руб.";
+    }
+}
+
+class Camera extends Electronics {
+    private float resolution;
+
+    @Override
+    public void init(Scanner scanner) {
+        System.out.print("Brand: ");
+        brand = scanner.next();
+        System.out.print("Model: ");
+        model = scanner.next();
+        System.out.print("Serial number: ");
+        serialNumber = scanner.next();
+        System.out.print("Resolution: ");
+        resolution = scanner.nextFloat();
+        System.out.print("Cost: ");
+        cost = scanner.nextInt();
+    }
+
+    @Override
+    public String toString() {
+        return "Камера [ " + brand +  " " + model +  ", " + serialNumber +  ", " +  resolution + " Мп ] " +
+                cost + " руб.";
+    }
+}
+
 public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Product product = new Cheese();
+        System.out.print("Количество товаров: ");
+        int numProducts = scanner.nextInt();
+        Product[] products = new Product[numProducts];
 
-        product.init(scanner);
+        int minCost = Integer.MAX_VALUE;
+        int minCostPos = 0;
+        for (int i = 0; i < numProducts; i++) {
+            System.out.print("Категория товара: ");
+            switch (scanner.nextInt()) {
+                case 1: {
+                    System.out.print("Вид игрушки: ");
+                    switch (scanner.nextInt()) {
+                        case 1:
+                            products[i] = new Rubika();
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                }
+                case 2: {
+                    System.out.print("Вид молочной продукции: ");
+                    switch (scanner.nextInt()) {
+                        case 1:
+                            products[i] = new Cheese();
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                }
+                case 3: {
+                    System.out.print("Вид техники: ");
+                    switch (scanner.nextInt()) {
+                        case 1:
+                            products[i] = new TV();
+                            break;
+                        case 2:
+                            products[i] = new Camera();
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                }
+                default:
+                    break;
+            }
 
-        System.out.println(product.toString());
+            products[i].init(scanner);
+            if (minCost > products[i].getCost())
+            {
+                minCost = products[i].getCost();
+                minCostPos = i;
+            }
+        }
+        System.out.print("Самый дешевый товар: " + products[minCostPos].toString());
     }
 }
