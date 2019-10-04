@@ -13,9 +13,11 @@ public class Main {
         int minCost = Integer.MAX_VALUE;
         int minCostPos = 0;
         for (int i = 0; i < numProducts; i++) {
+            System.out.print("1 - Игрушки\n2 - Молочные\n3 - Техника\n");
             System.out.print("Категория товара: ");
             switch (scanner.nextInt()) {
                 case 1: {
+                    System.out.print("1 - Кубик Рубика\n");
                     System.out.print("Вид игрушки: ");
                     switch (scanner.nextInt()) {
                         case 1:
@@ -27,6 +29,7 @@ public class Main {
                     break;
                 }
                 case 2: {
+                    System.out.print("1 - Сыр\n");
                     System.out.print("Вид молочной продукции: ");
                     switch (scanner.nextInt()) {
                         case 1:
@@ -38,6 +41,7 @@ public class Main {
                     break;
                 }
                 case 3: {
+                    System.out.print("1 - ТВ\n2 - Камера\n");
                     System.out.print("Вид техники: ");
                     switch (scanner.nextInt()) {
                         case 1:
@@ -56,8 +60,7 @@ public class Main {
             }
 
             products[i].init(scanner);
-            if (minCost > products[i].getCost())
-            {
+            if (minCost > products[i].getCost()) {
                 minCost = products[i].getCost();
                 minCostPos = i;
             }
