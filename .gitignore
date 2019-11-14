@@ -94,3 +94,4 @@ target/
 .idea/compiler.xml
 .idea/misc.xml
 .idea/compiler.xml
+/log_file.log
