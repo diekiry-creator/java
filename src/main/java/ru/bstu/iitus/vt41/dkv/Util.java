@@ -1,6 +1,7 @@
 package ru.bstu.iitus.vt41.dkv;
 
-import java.util.GregorianCalendar;
+import lombok.extern.log4j.Log4j2;
+
 import java.util.Scanner;
 
 public interface Util {

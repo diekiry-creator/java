@@ -1,15 +1,12 @@
 package ru.bstu.iitus.vt41.dkv;
 
-import ru.bstu.iitus.vt41.dkv.products.Camera;
-import ru.bstu.iitus.vt41.dkv.products.Cheese;
-import ru.bstu.iitus.vt41.dkv.products.Rubika;
-import ru.bstu.iitus.vt41.dkv.products.TV;
+import lombok.extern.log4j.Log4j2;
 
-import javax.xml.transform.Result;
 import java.util.Scanner;
 import java.util.Arrays;
 import java.util.LinkedList;
 
+@Log4j2
 public class App {
 
     public static void main(String[] args) {
@@ -29,11 +26,11 @@ public class App {
             System.out.print("* Наименование товара: ");
             tmp = scanner.next();
             try {
-                productType = ProductType.valueOf(tmp);
-                productList.add(productType.factoryMethod());
+                productList.add(ProductType.valueOf(tmp).factoryMethod());
                 productList.getLast().init(scanner);
-            } catch (RuntimeException e) {
-                System.out.print("Товар отстутствует.\n");
+            } catch (Exception e) {
+                System.out.print("Неверное наименование товара.\n");
+                log.error("Введено неверное наименование товара: " + tmp);
             }
 
             if (minCost > productList.get(0).getCost()) {
