@@ -4,9 +4,8 @@ import java.util.Scanner;
 
 public abstract class Product {
     protected String brand;
+    protected String type;
     protected int cost;
-
-    public abstract String toString();
 
     public abstract void init(Scanner scanner);
 
@@ -14,9 +13,7 @@ public abstract class Product {
         return cost;
     }
 
-    public boolean canBuyByCost(int money) {
-        return money >= cost;
-    }
+    public abstract boolean canBuyByCost(int money);
 
 }
 

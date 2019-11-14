@@ -5,23 +5,21 @@ import java.util.Scanner;
 public class Camera extends Electronics {
     private float resolution;
 
-    @Override
     public void init(Scanner scanner) {
-        System.out.print("Brand: ");
+        type = "Камера";
+        System.out.print("Бренд: ");
         brand = scanner.next();
-        System.out.print("Model: ");
+        System.out.print("Модель: ");
         model = scanner.next();
-        System.out.print("Serial number: ");
+        System.out.print("Серийный номер: ");
         serialNumber = scanner.next();
-        System.out.print("Resolution: ");
+        System.out.print("Разрешение: ");
         resolution = scanner.nextFloat();
-        System.out.print("Cost: ");
+        System.out.print("Цена: ");
         cost = scanner.nextInt();
     }
 
-    @Override
     public String toString() {
-        return "Камера [ " + brand +  " " + model +  ", " + serialNumber +  ", " +  resolution + " Мп ] " +
-                cost + " руб.";
+        return super.toString() +  resolution + " Мп";
     }
 }

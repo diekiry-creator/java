@@ -5,22 +5,19 @@ import java.util.Scanner;
 public class Rubika extends Toy {
     private String form;
 
-    @Override
     public void init(Scanner scanner) {
-        System.out.print("Brand: ");
+        type = "Кубик-Рубика";
+        System.out.print("Бренд: ");
         brand = scanner.next();
-        System.out.print("Form: ");
+        System.out.print("Форма: ");
         form = scanner.next();
-        System.out.print("Age rating: ");
+        System.out.print("Возрастное ограничение: ");
         ageRating = scanner.nextInt();
-        System.out.print("Cost: ");
+        System.out.print("Цена: ");
         cost = scanner.nextInt();
     }
 
-    @Override
     public String toString() {
-        return "Кубик Рубика [ " +
-                brand + ", " + form  + ", " + ageRating + "+ ] " +
-                cost + " руб.";
+        return super.toString() + ", " + form;
     }
 }

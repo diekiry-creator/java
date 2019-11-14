@@ -5,27 +5,24 @@ import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 public class Cheese extends Milky {
-    private String name;
+    private String cheeseName;
 
-    @Override
     public void init(Scanner scanner) {
-        System.out.print("Brand: ");
+        type = "Сыр";
+        System.out.print("Бренд: ");
         brand = scanner.next();
-        System.out.print("Name: ");
-        name = scanner.next();
-        System.out.print("Eat date [day.mouth.year]:\n ");
+        System.out.print("Название сыра: ");
+        cheeseName = scanner.next();
+        System.out.print("Срок годности [день.месяц.год]:\n");
         int day  = scanner.nextInt();
         int mouth = scanner.nextInt();
         int year = scanner.nextInt();
         eatDate = new GregorianCalendar(year, mouth - 1, day);
-        System.out.print("Cost: ");
+        System.out.print("Цена: ");
         cost = scanner.nextInt();
     }
 
-    @Override
     public String toString() {
-        return "Сыр [ " +
-                brand + ", " + name + ", " + eatDate.get(Calendar.DATE) + "." + (eatDate.get(Calendar.MONTH) + 1) + "." + eatDate.get(Calendar.YEAR) + " ] " +
-                cost + " руб.";
+        return super.toString() + ", " + cheeseName;
     }
 }

@@ -5,23 +5,21 @@ import java.util.Scanner;
 public class TV extends Electronics {
     private float diagonalSize;
 
-    @Override
     public void init(Scanner scanner) {
-        System.out.print("Brand: ");
+        type = "Телевизор";
+        System.out.print("Бренд: ");
         brand = scanner.next();
-        System.out.print("Model: ");
+        System.out.print("Модель: ");
         model = scanner.next();
-        System.out.print("Serial number: ");
+        System.out.print("Серийный номер: ");
         serialNumber = scanner.next();
-        System.out.print("Diagonal size: ");
+        System.out.print("Размер диагонали: ");
         diagonalSize = scanner.nextFloat();
-        System.out.print("Cost: ");
+        System.out.print("Цена: ");
         cost = scanner.nextInt();
     }
 
-    @Override
     public String toString() {
-        return "Телевизор [ " + brand +  " " + model +  ", " + serialNumber +  ", " +  diagonalSize + "\" ] " +
-                cost + " руб.";
+        return super.toString() +  diagonalSize + "\"";
     }
 }
