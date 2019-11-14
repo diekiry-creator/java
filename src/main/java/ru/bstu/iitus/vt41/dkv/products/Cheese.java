@@ -1,10 +1,14 @@
 package ru.bstu.iitus.vt41.dkv.products;
 
+import lombok.Getter;
+import lombok.Setter;
 import ru.bstu.iitus.vt41.dkv.Util;
 
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
+@Getter
+@Setter
 public class Cheese extends Milky {
     private String cheeseName;
 
