@@ -1,8 +1,11 @@
-package ru.bstu.iitus.vt41.dkv;
+package ru.bstu.iitus.vt41.dkv.products;
+
+import ru.bstu.iitus.vt41.dkv.Product;
+import ru.bstu.iitus.vt41.dkv.Util;
 
 import java.util.Scanner;
 
-public abstract class Electronics extends Product {
+public class Electronics extends Product {
     protected String model;
     protected String serialNumber;
 
@@ -16,7 +19,7 @@ public abstract class Electronics extends Product {
         System.out.print("Серийный номер: ");
         serialNumber = scanner.next();
         System.out.print("Цена: ");
-        cost = scanner.nextInt();
+        cost = Util.readInt(scanner);
     }
 
     public String toString() {

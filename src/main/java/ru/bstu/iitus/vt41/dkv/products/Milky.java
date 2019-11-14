@@ -1,4 +1,7 @@
-package ru.bstu.iitus.vt41.dkv;
+package ru.bstu.iitus.vt41.dkv.products;
+
+import ru.bstu.iitus.vt41.dkv.Product;
+import ru.bstu.iitus.vt41.dkv.Util;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -17,12 +20,12 @@ public class Milky extends Product {
         System.out.print("Тип: ");
         type = scanner.next();
         System.out.print("Срок годности [день.месяц.год]:\n");
-        int day  = scanner.nextInt();
-        int mouth = scanner.nextInt();
-        int year = scanner.nextInt();
+        System.out.print("день:\n"); int day  = Util.readInt(scanner);
+        System.out.print("месяц:\n"); int mouth = Util.readInt(scanner);
+        System.out.print("год:\n");int year = Util.readInt(scanner);
         eatDate = new GregorianCalendar(year, mouth - 1, day);
         System.out.print("Цена: ");
-        cost = scanner.nextInt();
+        cost = Util.readInt(scanner);
     }
 
     public boolean canBuyByCost(int money) {

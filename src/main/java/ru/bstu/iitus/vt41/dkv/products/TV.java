@@ -1,4 +1,7 @@
-package ru.bstu.iitus.vt41.dkv;
+package ru.bstu.iitus.vt41.dkv.products;
+
+import ru.bstu.iitus.vt41.dkv.Util;
+import ru.bstu.iitus.vt41.dkv.products.Electronics;
 
 import java.util.Scanner;
 
@@ -14,9 +17,9 @@ public class TV extends Electronics {
         System.out.print("Серийный номер: ");
         serialNumber = scanner.next();
         System.out.print("Размер диагонали: ");
-        diagonalSize = scanner.nextFloat();
+        diagonalSize = Util.readFloat(scanner);
         System.out.print("Цена: ");
-        cost = scanner.nextInt();
+        cost = Util.readInt(scanner);
     }
 
     public String toString() {

@@ -1,4 +1,7 @@
-package ru.bstu.iitus.vt41.dkv;
+package ru.bstu.iitus.vt41.dkv.products;
+
+import ru.bstu.iitus.vt41.dkv.Product;
+import ru.bstu.iitus.vt41.dkv.Util;
 
 import java.util.Scanner;
 
@@ -9,9 +12,9 @@ public class Exam extends Product {
         System.out.print("Предмет: ");
         type = scanner.next();
         System.out.print("Оценка: ");
-        mark = scanner.nextInt();
+        mark = Util.readInt(scanner);
         System.out.print("Цена: ");
-        cost = scanner.nextInt();
+        cost = Util.readInt(scanner);
     }
 
     public String toString() {

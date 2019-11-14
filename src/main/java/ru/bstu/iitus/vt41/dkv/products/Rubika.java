@@ -1,4 +1,6 @@
-package ru.bstu.iitus.vt41.dkv;
+package ru.bstu.iitus.vt41.dkv.products;
+
+import ru.bstu.iitus.vt41.dkv.Util;
 
 import java.util.Scanner;
 
@@ -12,9 +14,9 @@ public class Rubika extends Toy {
         System.out.print("Форма: ");
         form = scanner.next();
         System.out.print("Возрастное ограничение: ");
-        ageRating = scanner.nextInt();
+        ageRating = Util.readInt(scanner);
         System.out.print("Цена: ");
-        cost = scanner.nextInt();
+        cost = Util.readInt(scanner);
     }
 
     public String toString() {
